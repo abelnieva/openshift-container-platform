@@ -8,7 +8,8 @@ PRIVATEKEY=$4
 SUDOUSER=$5
 
 #Populate Azure DNS to nic card config 
-runuser -l $SUDOUSER -c  "echo \"DNS=168.63.129.16\" >> /etc/sysconfig/network-scripts/ifcfg-eth0"
+
+sudo bash -c 'echo "DNS=168.63.129.16" >> /etc/sysconfig/network-scripts/ifcfg-eth0'
 # Generate private keys for use by Ansible
 echo $(date) " - Generating Private keys for use by Ansible for OpenShift Installation"
 

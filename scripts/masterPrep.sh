@@ -9,7 +9,7 @@ LOCATION=$5
 STORAGEACCOUNT=$6
 
 #Populate Azure DNS to nic card config 
-runuser -l $SUDOUSER -c  "echo \"DNS=168.63.129.16\" >> /etc/sysconfig/network-scripts/ifcfg-eth0"
+sudo bash -c 'echo "DNS=168.63.129.16" >> /etc/sysconfig/network-scripts/ifcfg-eth0'
 # Remove RHUI
 
 rm -f /etc/yum.repos.d/rh-cloud.repo

@@ -10,7 +10,7 @@ POOL_ID=$3
 rm -f /etc/yum.repos.d/rh-cloud.repo
 sleep 10
 #Populate Azure DNS to nic card config 
-runuser -l $SUDOUSER -c  "echo \"DNS=168.63.129.16\" >> /etc/sysconfig/network-scripts/ifcfg-eth0"
+sudo bash -c 'echo "DNS=168.63.129.16" >> /etc/sysconfig/network-scripts/ifcfg-eth0'
 # Register Host with Cloud Access Subscription
 echo $(date) " - Register host with Cloud Access Subscription"
 
