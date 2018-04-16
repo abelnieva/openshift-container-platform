@@ -128,7 +128,7 @@ openshift_install_examples=true
 deployment_type=openshift-enterprise
 openshift_release=v3.9
 docker_udev_workaround=True
-openshift_use_dnsmasq=false
+openshift_use_dnsmasq=true
 openshift_master_default_subdomain=$ROUTING
 openshift_override_hostname_check=true
 osm_use_cockpit=true
@@ -137,6 +137,8 @@ openshift_master_api_port=443
 openshift_master_console_port=443
 osm_default_node_selector='region=app'
 openshift_disable_check=memory_availability,docker_image_availability
+osm_cluster_network_cidr="10.254.8.0/21"
+openshift_portal_net="10.254.0.0/21"
 $CLOUDKIND
 
 # default selectors for router and registry services
@@ -161,7 +163,7 @@ openshift_master_cluster_public_vip=$MASTERPUBLICIPADDRESS
 openshift_master_identity_providers=[{'name': 'htpasswd_auth', 'login': 'true', 'challenge': 'true', 'kind': 'HTPasswdPasswordIdentityProvider', 'filename': '/etc/origin/master/htpasswd'}]
 
 # Setup metrics
-openshift_metrics_install_metrics=false
+openshift_metrics_install_metrics=ture
 openshift_metrics_start_cluster=true
 openshift_metrics_hawkular_nodeselector={"region":"infra"}
 openshift_metrics_cassandra_nodeselector={"region":"infra"}
@@ -169,7 +171,7 @@ openshift_metrics_heapster_nodeselector={"region":"infra"}
 openshift_hosted_metrics_public_url=https://metrics.$ROUTING/hawkular/metrics
 
 # Setup logging
-openshift_logging_install_logging=false
+openshift_logging_install_logging=true
 openshift_logging_fluentd_nodeselector={"logging":"true"}
 openshift_logging_es_nodeselector={"region":"infra"}
 openshift_logging_kibana_nodeselector={"region":"infra"}

@@ -9,7 +9,8 @@ POOL_ID=$3
 
 rm -f /etc/yum.repos.d/rh-cloud.repo
 sleep 10
-
+#Populate Azure DNS to nic card config 
+runuser -l $SUDOUSER -c  "echo \"DNS=168.63.129.16\" >> /etc/sysconfig/network-scripts/ifcfg-eth0"
 # Register Host with Cloud Access Subscription
 echo $(date) " - Register host with Cloud Access Subscription"
 
@@ -86,7 +87,7 @@ echo $(date) " - Creating thin pool logical volume for Docker and staring servic
 
 DOCKERVG=$( parted -m /dev/sda print all 2>/dev/null | grep unknown | grep /dev/sd | cut -d':' -f1 )
 
-echo "DEVS=${DOCKERVG}" >> /etc/sysconfig/docker-storage-setup
+echo "DEVS=\"${DOCKERVG}\"" >> /etc/sysconfig/docker-storage-setup
 echo "VG=docker-vg" >> /etc/sysconfig/docker-storage-setup
 docker-storage-setup
 if [ $? -eq 0 ]
