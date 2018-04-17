@@ -102,6 +102,7 @@ fi
 
 systemctl enable docker
 systemctl start docker
-
+##reload network 
+sudo nmcli device connect eth0
 echo $(date) " - Script Complete"
 

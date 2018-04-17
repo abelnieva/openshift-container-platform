@@ -142,5 +142,6 @@ parameters:
   storageaccounttype: Premium_LRS
 EOF
 fi
-
+##reload network config 
+sudo nmcli device connect eth0
 echo $(date) " - Script Complete"
